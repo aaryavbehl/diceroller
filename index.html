@@ -1,13 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>ATB</title>
-    <link rel="stylesheet" href="ui.css">
-</head>
-<body>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 20%;
+        background: #000000;
+        color: white;
+      }
+      #dice {
+        font-size: 5rem;
+        animation: roll 0.5s;
+      }
+      @keyframes roll {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        background-size: 400% 400%;
+        animation: rgb-cycle 3s infinite;
+        color: white;
+      }
+      @keyframes rgb-cycle {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <h1>Roll the Dice</h1>
-    <div id="dice">🎲</div>
+    <div id="dice">⚀</div>
     <button onclick="rollDice()">Roll</button>
-    <script src="backend.js"></script>
-</body>
+    <script>
+      function rollDice() {
+        const faces = [
+          '⚀', 
+          '⚁', 
+          '⚂', 
+          '⚃', 
+          '⚄', 
+          '⚅', 
+        ];
+        document.getElementById('dice').textContent =
+          faces[Math.floor(Math.random() * 6)];
+      }
+    </script>
+  </body>
 </html>
